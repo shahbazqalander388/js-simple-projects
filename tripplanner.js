@@ -1,28 +1,5 @@
-// let destin=document.querySelector("#destination");
+let apikey = `a4cac524c79daa46227ab36a52c7a3e5`;
 
-
-// let list=document.querySelector("#list");
-// let btn=document.querySelector(".btn");
-// // console.log(destin,start,end,list);
-// btn.addEventListener("click",function trip1(){
-   
-//     let start=document.querySelector("#start")
-//     let end=document.querySelector("#end")
-   
-
-    
-//     let list=document.querySelector("#list");
-//     let li=document.createElement("li")
-//     console.log(li);
-//     list.appendChild(li);
-//     console.log(list);
-    
-//     start.value=li.innerText;
-//     end.value=li.innerText
-    
-
-
-// })
 let destin = document.querySelector("#destination");
 let start = document.querySelector("#start");
 let end = document.querySelector("#end");
@@ -34,13 +11,28 @@ function trip1(e) {
     e.preventDefault();
 
     if (destin.value && start.value && end.value) {
-        let li = document.createElement("li");
-        li.innerText = `Destination: ${destin.value}, Start: ${start.value}, End: ${end.value}`;
-        list.appendChild(li);
+        let city = destin.value
+        let apiurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
 
-        destin.value = "";
-        start.value = "";
-        end.value = "";
+        fetch(apiurl)
+            .then((response) => response.json())
+            .then((data) => {
+               
+                    let temp = data.main.temp;
+
+                
+                    let li = document.createElement("li");
+                    li.innerText = `Destination: ${city}, Start: ${start.value}, End: ${end.value}, Temp: ${temp.toFixed(1)} °C`;
+                    list.appendChild(li);
+         
+                destin.value = "";
+                start.value = "";
+                end.value = "";
+            })
+            .catch((err) => {
+                console.log("Error:", err);
+                alert("Failed to fetch weather.");
+            });
     } else {
         alert("Please fill all fields.");
     }
@@ -53,4 +45,3 @@ btnRemove.addEventListener("click", function (e) {
     btn.removeEventListener("click", trip1);
     alert("Trip add function has been disabled.");
 });
-
