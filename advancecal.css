@@ -1,0 +1,47 @@
+button{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    background-color: hsla(0, 7%, 6%, 0.3);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+button:hover{
+    background-color: rgb(33, 32, 32);
+  
+}
+#calcul{
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: rgb(89, 85, 85);
+   border-radius: 15px;
+   max-width: 500px;
+  
+}
+#display{
+    width: 91%;
+    padding: 20px;
+    font-size: 5rem;
+    text-align: left;
+    color: white;
+     background-color: hsla(0, 7%, 6%, 0.3);
+
+
+}
+body{
+display: flex;
+justify-content: center;
+align-items: center;
+
+ }
+ .opbtn{
+    background-color: rgb(231, 231, 62);
+ }
+.opbtn:hover{
+     background-color: rgb(162, 162, 97);
+
+}

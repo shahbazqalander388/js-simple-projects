@@ -1,46 +1,178 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+     /*   body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .parent {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        #product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        #product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        #product h2 {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        #product p {
+            color: #555;
+        }
+        #product-price {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        #product-Price, #product-Title, #product-Description {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        #product-Image, #product-Title, #product-Description {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        #product-Image3, #product-Title3, #product-Description3 {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        #product-Image3 {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        #product-Title3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        #product-Description3 {
+            color: #555;
+        }
+        #product-Price3 {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        #product-Image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        #product-Title {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        #product-Description {
+            color: #555;
+        }  */
+
+   </style> 
+   <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .parent {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        .card p {
+            color: #555;
+        }
+        .card p {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+        .card p {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+
+   </style>
 </head>
 <body>
-    
+    <div id="productContainer" class="parent">
+        
+    </div>
+
 </body>
-<script>
-    
-        
-       
-    // console.log(url);
-    // fetch(url).then((res)=>{
-    //     return res.json();
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<body>
+  <script>
+    const container = document.getElementById('productContainer');
 
-    // }).then((data)=>{
-    //     console.log(data.status);
-        
-    // })
-    // .catch((err)=>{
-    //     console.log(err);
-        
-    // }
-//    async function api() {
-//     let response=await fetch(url);
-//     console.log(response);
-    
-//     let data=await response.json();
-//     console.log(data.status);
-    
+    axios.get('https://api.escuelajs.co/api/v1/products')
+      .then(function (response) {
+        const products = response.data 
 
-        
-//     } 
-//     api();
-// const url="https://dog.ceo/api/breeds/image/random";
-// fetch(url);
+        products.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'card';
 
+          const img = document.createElement('img');
+          img.src = product.images[0];
+          img.alt = product.title;
 
+          const title = document.createElement('h3');
+          title.textContent = product.title;
 
-  
-    
-</script>
+          const price = document.createElement('p');
+          price.textContent = '$' + product.price;
+
+          card.appendChild(img);
+          card.appendChild(title);
+          card.appendChild(price);
+
+          container.appendChild(card);
+        });
+      })
+      .catch(function (error) {
+        console.error('Error fetching products:', error);
+        container.textContent = 'Failed to load products. Please try again.';
+      });
+  </script>
+
 </html>
