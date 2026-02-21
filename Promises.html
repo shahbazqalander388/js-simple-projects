@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let promise=new Promise((resolve,reject)=>{
+    //    resolve("promise is fulfilled")
+    // // reject("promise is rejected")
+    // })
+    // promise.then((mesg)=>{
+    //     console.log("first mesg"+ mesg);
+    //     return "second mesg"
+        
+    // })
+    // .then((mesg)=>{
+    //       console.log(mesg);
+    //     return "third mesg"
+    // })
+    //   .then((mesg)=>{
+    //       console.log(mesg);})
+    // promise All
+    let promise1=new Promise((resolve,reject)=>{
+        resolve("promise is resolve")
+    })
+     let promise2=new Promise((resolve,reject)=>{
+        resolve("promise is resolve")
+    })
+     let promise3=new Promise((resolve,reject)=>{
+        // resolve("promise is resolve")
+        reject("promise is rejected")
+    })
+     let promise4=new Promise((resolve,reject)=>{
+        resolve("promise is resolve")
+    })
+    .then((values)=>{
+        console.log(values);
+        
+    }).catch((err)=>{
+        console.log(err);
+        
+    })
+
+    
+          
+          
+        
+       
+        
+        
+
+   
+</script>
+</html>

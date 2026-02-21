@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//     function delay(ms){
+//         return new Promise(resolve=> setTimeout( resolve, ms))
+//     }
+
+// async function getData() {
+//     console.log("waiting");
+
+//     await delay(2000);
+//     console.log("started");
+    
+ 
+
+    
+// }
+// // console.log(delay(2000));
+
+// getData()
+// ✅ Task 1: Countdown Timer
+
+// Ek function likho jo 10 se 1 tak numbers print kare 
+// — har number ke beech 1 second ka delay ho.
+// Hint: Loop + await delay(1000)
+// function delay(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+// async function Countdown() {
+//     let array=[1,2,3,4,5,6,7,8,9,10]
+//     for (let index = 0; index < array.length; index++) {
+//         const element = array[index];
+//         await delay(2000)
+//         console.log(element);
+        
+        
+//     }
+    
+// }
+// Countdown()
+async function getData() {
+try{
+    let response=await fetch('https://jsonplaceholder.typicode.com/users') 
+let users= await response.json();
+console.log(users);
+users.forEach(user => {
+    console.log(user.name);
+    });
+    
+}
+catch(error){
+    console.log(error);
+    
+}
+
+}
+getData()
+
+
+
+</script>
+</html>
